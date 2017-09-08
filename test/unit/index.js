@@ -1,4 +1,14 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf
+// with an alias. Loading occurs via babel; set in webpack.base.conf.
 import Vue from 'vue'
+
+// Global jQuery is a Foundation dependency
+import jQuery from 'jquery'
+window.$ = jQuery
+// Foundation is loaded via babel; set in webpack.base.conf.
+import Foundation from 'foundation-sites'
+window.Foundation = Foundation
 
 Vue.config.productionTip = false
 

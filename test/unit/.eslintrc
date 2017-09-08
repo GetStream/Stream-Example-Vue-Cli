@@ -3,7 +3,9 @@
     "mocha": true
   },
   "globals": {
+    '$': false,
     "expect": true,
-    "sinon": true
+    'Foundation': false,
+    "sinon": true,
   }
 }

@@ -1,8 +1,15 @@
 // The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+// (runtime-only or standalone) has been set in webpack.base.conf
+// with an alias. Loading occurs via babel; set in webpack.base.conf.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
+import jQuery from 'jquery'
+window.$ = jQuery
+// Foundation is loaded via babel; set in webpack.base.conf.
+import Foundation from 'foundation-sites'
+window.Foundation = Foundation
 
 Vue.config.productionTip = false
 
