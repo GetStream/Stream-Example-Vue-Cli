@@ -14,3 +14,6 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+
+# Files distributed as templates
+config/dev.env.js

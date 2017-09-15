@@ -23,17 +23,16 @@
         </ul>
       </li>
     </ul>
+    <feed-activity-list></feed-activity-list>
   </div>
 </template>
 
 <script>
+import FeedActivityList from '@/components/FeedActivityList'
+
 export default {
-  name: 'hello',
-  mounted () {
-    this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
-      // These options can be declarative using the data attributes
-      hoverDelay: 300
-    })
+  components: {
+    FeedActivityList
   },
   data () {
     return {
@@ -42,7 +41,14 @@ export default {
   },
   destroyed () {
     this.dropdownMenu.destroy()
-  }
+  },
+  mounted () {
+    this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
+      // These options can be declarative using the data attributes
+      hoverDelay: 300
+    })
+  },
+  name: 'hello'
 }
 </script>
 
