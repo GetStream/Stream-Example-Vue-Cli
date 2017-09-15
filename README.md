@@ -2,6 +2,32 @@
 
 > An example Social Todo List app built with vue.js
 
+## Project setup
+
+This quick guide to setting up the project.
+
+Note: Paths below are relative to the root project directory.
+
+### 0. Setup
+1. Install the project dependencies:
+    ``` bash
+    yarn
+    ```
+
+2. Set local environment configuration in the `./config/dev.env.js` environment based on the template: `./config/dev.env.js.dist`.
+    ``` bash
+    cp ./config/dev.env.js.dist ./config/dev.env.js
+    ```
+
+### 1. Run the Website
+1. Run the following shell command:
+    ``` bash
+    npm start
+    ```
+
+### 2. Win.
+1. Browse to `http://localhost:8080`.
+
 ## Working with Vue-cli
 
 ### Build Setup
