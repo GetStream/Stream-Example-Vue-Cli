@@ -1,9 +1,8 @@
 <template>
       <div class="medium-12 columns">
         <div class="callout">
-          <div><strong>{{ activity.id }}</strong></div>
-          <div><em>{{ activity.actor }}: {{ activity.verb }}</em></div>
-          <p>{{ activity.object }}</p>
+          <div><strong>{{ activity.summary }}</strong></div>
+          <div><em>Activity ID:</em> {{ activity.id }} | <em>Actor:</em> {{ activity.actor }} | <em>Verb:</em> {{ activity.verb }}</div>
         </div>
       </div>
 </template>

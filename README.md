@@ -14,11 +14,6 @@ Note: Paths below are relative to the root project directory.
     yarn
     ```
 
-2. Set local environment configuration in the `./config/dev.env.js` environment based on the template: `./config/dev.env.js.dist`.
-    ``` bash
-    cp ./config/dev.env.js.dist ./config/dev.env.js
-    ```
-
 ### 1. Run the Website
 1. Run the following shell command:
     ``` bash

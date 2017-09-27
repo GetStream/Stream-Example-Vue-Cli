@@ -29,14 +29,14 @@ export default {
     getActivities: function () {
       this.activities = []
       let client = stream.connect(
-        process.env.APP_TOKEN,
+        process.env.STREAM_APP_KEY,
         null,
-        process.env.APP_ID
+        process.env.STREAM_APP_ID
       )
       let feed = client.feed(
-        process.env.FEED_GROUP,
-        process.env.FEED_ID,
-        process.env.FEED_TOKEN
+        process.env.STREAM_FEED_GROUP,
+        process.env.STREAM_FEED_ID,
+        process.env.STREAM_FEED_READ_ONLY_TOKEN
       )
       feed.get().then(response => {
         response['results'].map((a) => { this.activities.push(a) })
