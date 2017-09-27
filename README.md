@@ -1,6 +1,6 @@
-# stream-example-vue-social-todos
+# Stream-Example-Vue-Cli
 
-> An example Social Todo List app built with vue.js
+> A sample app built with the Vue CLI.
 
 ## Project setup
 
@@ -23,7 +23,7 @@ Note: Paths below are relative to the root project directory.
 ### 2. Win.
 1. Browse to `http://localhost:8080`.
 
-## Working with Vue-cli
+## Working with Vue CLI
 
 ### Build Setup
 
