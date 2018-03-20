@@ -13,7 +13,7 @@ Note: Paths below are relative to the root project directory.
 ### 0. Setup
 1. Install the project dependencies:
     ``` bash
-    yarn
+    npm install
     ```
 
 ### 1. Run the Website
