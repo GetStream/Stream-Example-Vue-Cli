@@ -1,48 +1,53 @@
 <template>
-  <div class="callout hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-
-    <ul id="dropdown-menu" class="dropdown menu" data-dropdown-menu>
-      <li>
-        <a href="#">Dropdown for links</a>
-        <ul class="menu">
-          <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-          <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-          <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-          <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-        </ul>
-      </li>
-    </ul>
-    <feed-activity-list></feed-activity-list>
+  <div class="grid-x">
+    <div class="cell small-6 grid-container">
+      <feed-container :feed-id="feeds[0].id" :feed-token="feeds[0].token"></feed-container>
+    </div>
+    <div class="cell small-6 grid-container">
+      <feed-container :feed-id="feeds[1].id" :feed-token="feeds[1].token"></feed-container>
+    </div>
   </div>
 </template>
 
 <script>
-import FeedActivityList from '@/components/FeedActivityList'
+import FeedContainer from '@/components/FeedContainer'
+import * as stream from 'getstream'
 
 export default {
   components: {
-    FeedActivityList
+    FeedContainer
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      feeds: process.env.STREAM_FEEDS
     }
   },
   destroyed () {
     this.dropdownMenu.destroy()
   },
   mounted () {
+    // ensure feeds follow one another
+    let client = stream.connect(
+      process.env.STREAM_APP_KEY,
+      null,
+      process.env.STREAM_APP_ID
+    )
+    client.feed(
+      process.env.STREAM_FEED_GROUP,
+      this.feeds[0].id,
+      process.env.STREAM_FEED_READ_WRITE_TOKEN
+    ).follow(process.env.STREAM_FEED_GROUP, this.feeds[1].id).catch(err => {
+      console.log('error following feed: ' + err)
+    })
+    client.feed(
+      process.env.STREAM_FEED_GROUP,
+      this.feeds[1].id,
+      process.env.STREAM_FEED_READ_WRITE_TOKEN
+    ).follow(process.env.STREAM_FEED_GROUP, this.feeds[0].id).catch(err => {
+      console.log('error following feed: ' + err)
+    })
+
     this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
       // These options can be declarative using the data attributes
       hoverDelay: 300

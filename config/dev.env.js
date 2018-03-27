@@ -7,5 +7,7 @@ module.exports = merge(prodEnv, {
   STREAM_APP_KEY: '"pvjukxquhwfy"',
   STREAM_FEED_GROUP: '"framework_feeds"',
   STREAM_FEED_ID: '"vue"',
-  STREAM_FEED_READ_ONLY_TOKEN: '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6IioiLCJhY3Rpb24iOiJyZWFkIiwiZmVlZF9pZCI6ImZyYW1ld29ya19mZWVkc3Z1ZSJ9.PbUousiPJe98111FVHFDK6AnW5z1nzeahAF8SfiYmQM"'
+  STREAM_FEED_READ_ONLY_TOKEN: '"read only token"',
+  STREAM_FEED_READ_WRITE_TOKEN: '"read / write token"',
+  STREAM_FEEDS: '[{"id": "feed 1", "token": "feed token"}, {"id": "feed 2", "token": "feed 2"}]',
 })

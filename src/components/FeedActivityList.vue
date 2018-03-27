@@ -1,13 +1,10 @@
 <template>
   <div>
-    <h1>Feed</h1>
-    <div>
-      <activity-card
-        v-for="activity in activities"
-        :key="activity.id"
-        :activity="activity">
-      </activity-card>
-    </div>
+    <activity-card
+      v-for="activity in activities"
+      :key="activity.id"
+      :activity="activity">
+    </activity-card>
   </div>
 </template>
 
@@ -35,18 +32,54 @@ export default {
       )
       let feed = client.feed(
         process.env.STREAM_FEED_GROUP,
-        process.env.STREAM_FEED_ID,
-        process.env.STREAM_FEED_READ_ONLY_TOKEN
+        this.feedId,
+        this.feedToken
       )
-      feed.get().then(response => {
-        response['results'].map((a) => { this.activities.push(a) })
+      feed.get({limit: 20, offset: 0}).then(result => {
+        result['results'].map((a) => { this.activities.push(a) })
+        feed.subscribe(this.feedUpdates).then(result => {
+          console.log('Success connecting to ' + this.feedId + ' realtime notifications')
+        }, err => {
+          if (err) {
+            console.log('Error connecting to ' + this.feedId + ' realtime notifications. ' + err)
+          }
+        })
+      },
+      error => {
+        console.log('error...' + error)
       })
+    },
+    connectRealtime: function () {
+      let client = stream.connect(
+        process.env.STREAM_APP_KEY,
+        null,
+        process.env.STREAM_APP_ID
+      )
+      let feed = client.feed(
+        process.env.STREAM_FEED_GROUP,
+        this.feedId,
+        this.feedToken
+      )
+      feed.subscribe(this.feedUpdates).then(result => {
+        console.log('Success connecting to ' + this.feedId + ' realtime notifications')
+      }, err => {
+        if (err) {
+          console.log('Error connecting to ' + this.feedId + ' realtime notifications. ' + err)
+        }
+      })
+    },
+    feedUpdates: function (updates) {
+      if (updates && updates['new'].length > 0) {
+        updates['new'].reverse().map((a) => { this.activities.unshift(a) })
+      }
     }
   },
   mounted () {
     this.getActivities()
+    // this.connectRealtime()
   },
-  name: 'FeedActivityList'
+  name: 'FeedActivityList',
+  props: [ 'feedId', 'feedToken' ]
 }
 </script>
 
