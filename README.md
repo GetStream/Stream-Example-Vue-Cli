@@ -2,6 +2,8 @@
 
 > A sample app built with the Vue CLI.
 
+This is very basic example intended to accompany the [JavaScript Frontend Framework CLI Showdown](https://getstream.io/blog/javascript-framework-cli-showdown/) post on the Stream blog. If you would like to contribute a Vue.js example that demonstrates additional features, feel free to [contact us](https://getstream.io/contact/).
+
 The project is pre-configured with a shared [Stream](https://getstream.io) account for testing purposes. You can learn more about Stream feeds, sign up for an account, and obtain your own App Id and Key at https://getstream.io/get_started.
 
 ## Project setup
