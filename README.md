@@ -1,3 +1,5 @@
+> **This repository is archived and will be deleted.** It is no longer maintained. For a current alternative, see [the Feeds v3 JavaScript docs](https://getstream.io/activity-feeds/docs/javascript/).
+
 # Stream-Example-Vue-Cli
 
 > A sample app built with the Vue CLI.
